@@ -3,7 +3,8 @@ var buttonAudio = {
   red: new Audio("sounds/red.mp3"),
   blue: new Audio("sounds/blue.mp3"),
   green: new Audio("sounds/green.mp3"),
-  yellow: new Audio("sounds/yellow.mp3")
+  yellow: new Audio("sounds/yellow.mp3"),
+  wrong: new Audio("sounds/wrong.mp3"),
 };
 var gamePattern = [];
 var userClickedPattern = [];
@@ -55,6 +56,7 @@ $(".btn").on("click", function() {
     playSound(userChosenColor);
     animatePress(userChosenColor);
     if (!checkAnswer()) {
+      playSound("wrong");
       $("h1").text("Wrong answer!");
       setTimeout(resetGame, 5000);
     } else if (gamePattern.length == userClickedPattern.length) { // entire sequence correct
